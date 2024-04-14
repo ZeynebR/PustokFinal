@@ -7,6 +7,7 @@
 
         public Category? ParentCategories { get; set; }
         public ICollection<Category>? Subcategories { get; set; }
+        public ICollection<Product>? Products { get; set; }
     }
 }
 

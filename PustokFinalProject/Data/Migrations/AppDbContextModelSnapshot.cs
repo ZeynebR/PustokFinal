@@ -264,7 +264,7 @@ namespace PustokFinalProject.Data.Migrations
             modelBuilder.Entity("PustokFinalProject.Models.Product", b =>
                 {
                     b.HasOne("PustokFinalProject.Models.Category", "Category")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -328,6 +328,8 @@ namespace PustokFinalProject.Data.Migrations
 
             modelBuilder.Entity("PustokFinalProject.Models.Category", b =>
                 {
+                    b.Navigation("Products");
+
                     b.Navigation("Subcategories");
                 });
 

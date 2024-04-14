@@ -178,20 +178,20 @@
             if (productAuthor.Author != null)
             {
                 <a href="#" class="author">
-                    @productAuthor.Author.Name <!-- Replace with actual property from your Author model -->
+                    @productAuthor.Author.Name 
                 </a>
             }
         }
     }
-    <h3><a href="product-details.html">@product.Name</a></h3> <!-- Replace with actual property from your Product model -->
+    <h3><a href="product-details.html">@product.Name</a></h3> 
 </div>
 
 							<div class="product-card--body">
 								<div class="card-image">
-									<img src="@product." alt="@product.Name"> <!-- Replace with actual property from your model -->
+									<img src="@product." alt="@product.Name"> 
 									<div class="hover-contents">
 										<a href="product-details.html" class="hover-image">
-											<img src="~/client/@(product.ProductImages.FirstOrDefault(x=>x.IsHovered).Url)" alt="@product.Name"> <!-- Replace with actual property from your model -->
+											<img src="~/client/@(product.ProductImages.FirstOrDefault(x=>x.IsHovered).Url)" alt="@product.Name">
 										</a>
 										<div class="hover-btns">
 											<a href="cart.html" class="single-btn">
@@ -210,11 +210,11 @@
 									</div>
 								</div>
 								<div class="price-block">
-									<span class="price">£@product.DiscountedPrice</span> <!-- Replace with actual property from your model -->
+									<span class="price">£@product.DiscountedPrice</span> 
 									@if (product.DiscountedPrice.HasValue)
 									{
 										var discountPercentage = ((product.SellingPrice - product.DiscountedPrice.Value) / product.SellingPrice) * 100;
-										<del class="price-old">£@product.SellingPrice</del> <!-- Replace with actual property from your model -->
+										<del class="price-old">£@product.SellingPrice</del> 
 										<span class="price-discount">@discountPercentage.ToString("0")%</span>
 									}
 								</div>
@@ -222,7 +222,7 @@
 						</div>
 						<div class="product-list-content">
 							<div class="card-image">
-								<img src="~/client/@(product.ProductImages.FirstOrDefault(x=>x.IsMainCover).Url)" alt="@product.Name"> <!-- Replace with actual property from your model -->
+								<img src="~/client/@(product.ProductImages.FirstOrDefault(x=>x.IsMainCover).Url)" alt="@product.Name"> 
 							</div>
 							<div class="product-card--body">
 								<div class="product-header">
@@ -233,14 +233,14 @@
 											if (productAuthor != null && productAuthor.Author != null)
 											{
 												<a href="#" class="author">
-													@productAuthor.Author.Name <!-- Assuming Author is a navigation property in ProductAuthor -->
+													@productAuthor.Author.Name 
 												</a>
 											}
 										}
 									}
 									<h3>
 										<a href="product-details.html" tabindex="0">
-											@product.Name <!-- Replace with actual property from your model -->
+											@product.Name 
 										</a>
 									</h3>
 								</div>
@@ -248,15 +248,15 @@
 								<article>
 									<h2 class="sr-only">Card List Article</h2>
 									<p>
-										@product.Description <!-- Replace with actual property from your model -->
+										@product.Description 
 									</p>
 								</article>
 								<div class="price-block">
-									<span class="price">£@product.DiscountedPrice</span> <!-- Replace with actual property from your model -->
+									<span class="price">£@product.DiscountedPrice</span> 
 									@if (product.DiscountedPrice.HasValue)
 									{
 										var discountPercentage = ((product.SellingPrice - product.DiscountedPrice.Value) / product.SellingPrice) * 100;
-										<del class="price-old">£@product.SellingPrice</del> <!-- Replace with actual property from your model -->
+										<del class="price-old">£@product.SellingPrice</del> 
 										<span class="price-discount">@discountPercentage.ToString("0")%</span>
 									}
 								</div>
