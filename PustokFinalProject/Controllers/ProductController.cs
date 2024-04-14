@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PustokFinalProject.Data;
+using PustokFinalProject.Models;
 
 namespace PustokFinalProject.Controllers
 {
@@ -25,9 +26,27 @@ namespace PustokFinalProject.Controllers
 			return View(products);
         }
 
-        public IActionResult Detail()
+        public  async Task<ActionResult> Detail()
         {
-            return View();
+            var product = await _context.Products
+              .Include(x => x.Category)
+              .Include(x => x.ProductImages)
+              .FirstOrDefaultAsync();
+
+
+            return View(product);
         }
+
+        //public async Task<IActionResult> Detail(int? id)
+        //{
+        //    if (id == null) return NotFound();
+        //    var product = await _context.Products
+        //       .Include(x => x.Category)
+        //       .Include(x => x.ProductImages)
+        //       .FirstOrDefaultAsync(x => x.Id == id);
+
+          
+        //    return View(product);
+        //}
     }
 }

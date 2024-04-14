@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PustokFinalProject.Data;
+using PustokFinalProject.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("default")));
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+{
+    options.User.RequireUniqueEmail = true;
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 8;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Lockout.AllowedForNewUsers = false;
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+}).AddEntityFrameworkStores<AppDbContext>()
+.AddDefaultTokenProviders();
+
 
 var app = builder.Build();
 

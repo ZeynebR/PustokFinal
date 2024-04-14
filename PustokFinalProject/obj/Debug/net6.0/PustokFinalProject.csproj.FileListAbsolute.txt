@@ -277,3 +277,8 @@ C:\Users\zeyne\OneDrive\Desktop\P2\Pustok\PustokFinalProject\obj\Debug\net6.0\re
 C:\Users\zeyne\OneDrive\Desktop\P2\Pustok\PustokFinalProject\obj\Debug\net6.0\PustokFinalProject.pdb
 C:\Users\zeyne\OneDrive\Desktop\P2\Pustok\PustokFinalProject\obj\Debug\net6.0\PustokFinalProject.genruntimeconfig.cache
 C:\Users\zeyne\OneDrive\Desktop\P2\Pustok\PustokFinalProject\obj\Debug\net6.0\ref\PustokFinalProject.dll
+C:\Users\zeyne\OneDrive\Desktop\P2\Pustok\PustokFinalProject\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\zeyne\OneDrive\Desktop\P2\Pustok\PustokFinalProject\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\zeyne\OneDrive\Desktop\P2\Pustok\PustokFinalProject\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\zeyne\OneDrive\Desktop\P2\Pustok\PustokFinalProject\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\zeyne\OneDrive\Desktop\P2\Pustok\PustokFinalProject\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
