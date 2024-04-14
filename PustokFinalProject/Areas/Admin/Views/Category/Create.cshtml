@@ -1,0 +1,34 @@
+﻿@model Category
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Name</label>
+        <input type="text" asp-for="Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="isSubcategory" name="isSubcategory">
+        <label class="form-check-label" for="isSubcategory">Is Subcategory</label>
+    </div>
+
+    <div id="parentCategoryDropdown" style="display: none;">
+        <label for="parentCategory" class="form-label">Parent Category</label>
+        <select class="form-select" id="parentCategory" name="ParentId">
+            @foreach (var category in ViewBag.ParentCategories)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+    </div>
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+<script>
+    document.getElementById("isSubcategory").addEventListener("change", function () {
+        var parentCategoryDropdown = document.getElementById("parentCategoryDropdown");
+        parentCategoryDropdown.style.display = this.checked ? "block" : "none";
+    });
+</script>
