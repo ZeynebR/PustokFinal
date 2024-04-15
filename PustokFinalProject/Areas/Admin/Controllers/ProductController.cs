@@ -156,13 +156,13 @@ namespace PustokFinalProject.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            // Fetch categories for dropdown list
+           
             var categories = await _context.Categories.ToListAsync();
             ViewBag.Categories = categories.Select(c => new SelectListItem
             {
                 Text = c.Name,
                 Value = c.Id.ToString(),
-                Selected = c.Id == product.CategoryId // Select the category of the product
+                Selected = c.Id == product.CategoryId 
             }).ToList();
 
             return View(product);
@@ -190,7 +190,7 @@ namespace PustokFinalProject.Areas.Admin.Controllers
                 {
                     Text = c.Name,
                     Value = c.Id.ToString(),
-                    Selected = c.Id == product.CategoryId // Select the category of the product
+                    Selected = c.Id == product.CategoryId 
                 }).ToList();
 
                 return View(product);
