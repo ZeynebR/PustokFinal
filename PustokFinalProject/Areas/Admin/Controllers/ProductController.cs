@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PustokFinalProject.Data;
 using PustokFinalProject.Extensions;
@@ -36,9 +37,13 @@ namespace PustokFinalProject.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create()
         {
-            ViewBag.Categories = await _context.Categories.ToListAsync();
+            var categories = await _context.Categories.ToListAsync();
+            var selectList = new SelectList(categories, "Id", "Name");
+            ViewBag.Categories = selectList;
             return View();
         }
+
+
 
         [HttpPost]
         public async Task<IActionResult> Create(Product product)
@@ -137,5 +142,95 @@ namespace PustokFinalProject.Areas.Admin.Controllers
 
             return View(product);
         }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            // Fetch categories for dropdown list
+            var categories = await _context.Categories.ToListAsync();
+            ViewBag.Categories = categories.Select(c => new SelectListItem
+            {
+                Text = c.Name,
+                Value = c.Id.ToString(),
+                Selected = c.Id == product.CategoryId // Select the category of the product
+            }).ToList();
+
+            return View(product);
+        }
+        private bool ProductExists(int id)
+        {
+            return _context.Products.Any(e => e.Id == id);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,SellingPrice,DiscountedPrice,CategoryId")] Product product)
+        {
+            if (id != product.Id)
+            {
+                return NotFound();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                // Fetch categories for dropdown list
+                var categories = await _context.Categories.ToListAsync();
+                ViewBag.Categories = categories.Select(c => new SelectListItem
+                {
+                    Text = c.Name,
+                    Value = c.Id.ToString(),
+                    Selected = c.Id == product.CategoryId // Select the category of the product
+                }).ToList();
+
+                return View(product);
+            }
+
+            try
+            {
+                _context.Update(product);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ProductExists(product.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

@@ -1,0 +1,57 @@
+﻿@model PustokFinalProject.Models.Product
+
+<h1>Edit Product</h1>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description">Description:</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SellingPrice">Selling Price:</label>
+        <input asp-for="SellingPrice" class="form-control" />
+        <span asp-validation-for="SellingPrice" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DiscountedPrice">Discounted Price:</label>
+        <input asp-for="DiscountedPrice" class="form-control" />
+        <span asp-validation-for="DiscountedPrice" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CategoryId">Category:</label>
+        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories"></select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MainFile">Main File:</label>
+        <input type="file" asp-for="MainFile" class="form-control" />
+        <span asp-validation-for="MainFile" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="HoverFile">Hover File:</label>
+        <input type="file" asp-for="HoverFile" class="form-control" />
+        <span asp-validation-for="HoverFile" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Files">Additional Images:</label>
+        <input type="file" multiple asp-for="Files" class="form-control" />
+        <span asp-validation-for="Files" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
