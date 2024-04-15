@@ -50,7 +50,75 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAuthors"
+                   aria-expanded="true" aria-controls="collapseAuthors">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Authors</span>
+                </a>
+                <div id="collapseAuthors" class="collapse" aria-labelledby="headingAuthors" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="Author" asp-action="Index">Author List</a>
+                        <a class="collapse-item" asp-controller="Author" asp-action="Create">Author Create</a>
+                    </div>
+                </div>
+            </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProductAuthors"
+                   aria-expanded="true" aria-controls="collapseProductAuthors">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Product Authors</span>
+                </a>
+                <div id="collapseProductAuthors" class="collapse" aria-labelledby="headingProductAuthors" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="ProductAuthor" asp-action="Index">Product Author List</a>
+                        <a class="collapse-item" asp-controller="ProductAuthor" asp-action="Create">Product Author Create</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTags"
+                   aria-expanded="true" aria-controls="collapseTags">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Tags</span>
+                </a>
+                <div id="collapseTags" class="collapse" aria-labelledby="headingTags" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="Tag" asp-action="Index">Tag List</a>
+                        <a class="collapse-item" asp-controller="Tag" asp-action="Create">Tag Create</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProductTags"
+                   aria-expanded="true" aria-controls="collapseProductTags">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Product Tags</span>
+                </a>
+                <div id="collapseProductTags" class="collapse" aria-labelledby="headingProductTags" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="ProductTag" asp-action="Index">Product Tag List</a>
+                        <a class="collapse-item" asp-controller="ProductTag" asp-action="Create">Product Tag Create</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts"
+                   aria-expanded="true" aria-controls="collapseProducts">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Products</span>
+                </a>
+                <div id="collapseProducts" class="collapse" aria-labelledby="headingProducts" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-controller="Product" asp-action="Index">Product List</a>
+                        <a class="collapse-item" asp-controller="Product" asp-action="Create">Product Create</a>
+                    </div>
+                </div>
+            </li>
 
         </ul>
         <!-- End of Sidebar -->

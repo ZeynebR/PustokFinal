@@ -1,0 +1,26 @@
+﻿@model ProductTagVm
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="productId" class="form-label">Product</label>
+        <select asp-for="ProductId" class="form-control" id="productId">
+            @foreach (var product in ViewBag.Products)
+            {
+                <option value="@product.Id">@product.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="tagId" class="form-label">Tag</label>
+        <select asp-for="TagId" class="form-control" id="tagId">
+            @foreach (var tag in ViewBag.Tags)
+            {
+                <option value="@tag.Id">@tag.Name</option>
+            }
+        </select>
+    </div>
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

@@ -1,0 +1,67 @@
+﻿@model List<ProductAuthor>
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Product Authors</h1>
+    <p class="mb-4">
+        DataTables is a third-party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the <a target="_blank"
+                                                                   href="https://datatables.net">official DataTables documentation</a>.
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Product Authors Table</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Author Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var productAuthor in Model)
+                        {
+                            <tr>
+                                <td>@productAuthor.Product.Name</td>
+                                <td>@productAuthor.Author.Name</td>
+                                <td>
+                                    <a href="@Url.Action("Edit", "ProductAuthor", new { id = productAuthor.Id })" class="btn btn-primary">Edit</a>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal@(productAuthor.Id)">Delete</button>
+
+                                    <div class="modal fade" id="deleteModal@(productAuthor.Id)" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel@(productAuthor.Id)" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteModalLabel@(productAuthor.Id)">Delete Product Author</h5>
+                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete this product author association?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                                                    <form method="post" action="@Url.Action("Delete", "ProductAuthor", new { id = productAuthor.Id })">
+                                                        @Html.AntiForgeryToken()
+                                                        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

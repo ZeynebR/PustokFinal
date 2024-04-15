@@ -15,5 +15,14 @@ namespace PustokFinalProject.Data
         public DbSet<ProductTag> ProductTags { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<ProductAuthor> ProductAuthors { get; set; }
+
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Category>().HasQueryFilter(x => !x.IsDeleted);
+            base.OnModelCreating(modelBuilder);
+        }
     }
+
 }
